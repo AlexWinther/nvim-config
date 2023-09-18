@@ -28,6 +28,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
+				"jdtls",
 				"lua_ls",
 				"pyright",
 				"clangd",
