@@ -43,9 +43,18 @@ return {
 			ensure_installed = {
 				"stylua", -- lua formatter
 				"black", -- python formatter
+				"autopep8", -- python formatter
+				"clang_format", -- c/c++ formatter
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true,
+			handlers = {
+				["*.lua"] = { "stylua" },
+				["*.py"] = { "black", "autopep8" },
+				["*.c"] = { "clang_format" },
+				["*.cpp"] = { "clang_format" },
+				["*.h"] = { "clang_format" },
+			},
 		})
 	end,
 }
