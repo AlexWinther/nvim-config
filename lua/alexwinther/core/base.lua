@@ -1,4 +1,5 @@
 vim.o.termguicolors = true
+vim.o.swapfile = false
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
