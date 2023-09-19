@@ -4,18 +4,21 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 local vcmd = vim.cmd
 
--- jk as <esc> in insert mode 
-keymap.set('i', 'jk', '<esc>')
+-- remove <C-z> closing nvim
+keymap.set("n", "<C-z>", "<nop>")
+
+-- jk as <esc> in insert mode
+keymap.set("i", "jk", "<esc>")
 
 -- save with leader
-keymap.set('n', '<leader>w', vcmd.w)
+keymap.set("n", "<leader>w", vcmd.w)
 
 -- Centering on scroll
-keymap.set('n', '<C-d>', '<C-d>zz')
-keymap.set('n', '<C-u>', '<C-u>zz')
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Clear highlights
-keymap.set('n', '<leader>h', vcmd.noh)
+keymap.set("n", "<leader>h", vcmd.noh)
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
@@ -34,6 +37,6 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
--- Diagnostic keymaps 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+-- Diagnostic keymaps
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
