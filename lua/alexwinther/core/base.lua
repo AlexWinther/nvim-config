@@ -18,6 +18,12 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- Undo settings
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.undodir")
+vim.opt.undolevels = 1000
+vim.opt.undoreload = 10000
+
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
