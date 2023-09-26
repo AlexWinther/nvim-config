@@ -29,6 +29,7 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"jdtls",
+				"rust_analyzer",
 				"efm",
 				"lua_ls",
 				"pyright",
@@ -54,6 +55,7 @@ return {
 				["*.c"] = { "clang_format" },
 				["*.cpp"] = { "clang_format" },
 				["*.h"] = { "clang_format" },
+				["*.rs"] = { "rustfmt" },
 			},
 		})
 	end,
