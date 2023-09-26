@@ -24,6 +24,10 @@ vim.opt.undodir = vim.fn.expand("~/.undodir")
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
 
+-- Split settings
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
