@@ -1,2 +1,2 @@
-require('alexwinther.core')
-require('alexwinther.lazy')
+require('AlexWinther.core')
+require('AlexWinther.lazy-setup')

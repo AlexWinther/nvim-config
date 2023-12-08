@@ -1,2 +1,4 @@
-require("alexwinther.core.remap")
-require("alexwinther.core.base")
+local folder = (...) .. '.'
+
+require(folder .. 'remap')
+require(folder .. 'base')
