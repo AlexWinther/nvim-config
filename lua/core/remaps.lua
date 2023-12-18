@@ -1,8 +1,13 @@
+-- map leader 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- conciseness
 local keymap = vim.keymap
 local vcmd = vim.cmd
+
+-- Unmap space
+keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- remove <C-z> closing nvim
 keymap.set('n', '<C-z>', '<nop>')
@@ -17,6 +22,10 @@ keymap.set('n', '<leader>w', vcmd.w)
 keymap.set('n', '<C-d>', '<C-d>zz')
 keymap.set('n', '<C-u>', '<C-u>zz')
 
+-- Keep highlight after indentation
+keymap.set('v', '>', '>gv')
+keymap.set('v', '<', '<gv')
+
 -- Move selected line / block of text in visual mode
 keymap.set('x', 'K', ":move '<-2<CR>gv-gv")
 keymap.set('x', 'J', ":move '>+1<CR>gv-gv")
@@ -26,7 +35,7 @@ keymap.set('v', '<S-tab>', '<gv')
 keymap.set('v', '<tab>', '>gv')
 
 -- Clear highlights
-keymap.set('n', '<leader>h', vcmd.noh)
+keymap.set('n', '<leader>ch', vcmd.noh)
 
 -- increment/decrement numbers
 keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
@@ -55,5 +64,7 @@ keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
 keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
 keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 
-keymap.set('n', '<leader><C-R>', ':12sp<CR>:term python %<CR>', { silent = true })
-keymap.set('n', '<C-W>', ':bd!<CR>', { silent = true })
+-- Remap for dealing with word wrap
+keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
