@@ -1,9 +1,9 @@
 return {
-  -- Show possible keymaps
-  {
-    'folke/which-key.nvim',
-    opts = {},
-    config = function()
+    -- Show possible keymaps
+    {
+        'folke/which-key.nvim',
+        opts = {},
+        config = function()
             -- document existing key chains
             require('which-key').register {
                 ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
@@ -24,6 +24,7 @@ return {
         end
     },
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+    -- "gc" to comment visual regions/lines
+    { 'numToStr/Comment.nvim', opts = {} },
+    { 'stevearc/dressing.nvim', opts = {} },
 }
