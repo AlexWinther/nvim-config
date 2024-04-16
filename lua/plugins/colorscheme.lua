@@ -18,7 +18,7 @@ return {
 
       catppuccin.setup {
         transparent_background = true,
-        term_colors = true,
+        term_colors = false,
       }
       vim.cmd 'colorscheme catppuccin'
     end,
