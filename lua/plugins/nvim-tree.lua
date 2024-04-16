@@ -1,36 +1,40 @@
 return {
-    {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            local opts = {
-                sort = {
-                    sorter = "case_sensitive",
-                },
-                view = {
-                    side = "right",
-                    width = 35,
-                },
-                renderer = {
-                    group_empty = true,
-                },
-                filters = {
-                    dotfiles = false,
-                    custom = { '^.git$' },
-                },
-                git = {
-                    enable = true,
-                    ignore = false,
-                    timeout = 500,
-                },
-            }
+  'nvim-tree/nvim-tree.lua',
+  version = '*',
+  lazy = false,
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
+  config = function()
+    local keymap = vim.keymap -- for concisenes
+    -- keymap.set('n', '-', ':NvimTreeToggle<CR>', { desc = 'Toggle Nvim Tree' })
+    keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true }) -- toggle file explorer
 
-            require("nvim-tree").setup(opts)
+    -- disable netrw at the very start of your init.lua
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
 
-            vim.keymap.set({"n", "v", "x"}, "<leader>et", ":NvimTreeToggle<CR>")
-            vim.keymap.set({"n", "v", "x"}, "<leader>ef", ":NvimTreeFindFile<CR>")
-        end
-    },
+    -- optionally enable 24-bit colour
+    vim.opt.termguicolors = true
+
+    local nvimtree = require 'nvim-tree'
+    nvimtree.setup {
+      disable_netrw = true,
+      hijack_netrw = true,
+      respect_buf_cwd = true,
+      sync_root_with_cwd = true,
+      view = {
+        width = 35,
+      },
+      filters = {
+        dotfiles = false,
+      },
+      -- filters = {
+      --   custom = { "^.git$" },
+      -- },
+      -- renderer = {
+      --   indent_width = 1,
+      -- },
+    }
+  end,
 }

@@ -1,2 +1,3 @@
-require('core.base')
-require('core.remaps')
+require 'core.opts'
+require 'core.keymaps'
+require 'core.autocmds'
