@@ -27,20 +27,37 @@ vim.opt.incsearch = true
 vim.opt.wrap = false
 
 -- Undo settings
-vim.opt.undofile = true
-vim.opt.undodir = vim.fn.expand("~/.undodir")
-vim.opt.undolevels = 1000
-vim.opt.undoreload = 10000
+if not vim.g.vscode then
+    vim.opt.undofile = true
+    vim.opt.undodir = vim.fn.expand("~/.undodir")
+    vim.opt.undolevels = 1000
+    vim.opt.undoreload = 10000
+end
 
 -- Split settings
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+local augroup = vim.api.nvim_create_augroup
+
+local highlight_group = augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
+
+local AlexWinthterGroup = augroup('AlexWinthter', {})
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    group = AlexWinthterGroup,
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
+})
+
+if not vim.g.vscode then
+    vim.g.netrw_browse_split = 0
+    vim.g.netrw_banner = 0
+    vim.g.netrw_winsize = 25
+end

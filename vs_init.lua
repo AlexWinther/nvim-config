@@ -16,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- source from plugins folder
-require("lazy").setup("plugins", {
+require("lazy").setup("vs_plugins", {
   change_detection = {
     notify = false,
   },
@@ -24,3 +24,4 @@ require("lazy").setup("plugins", {
 
 -- the line beneath this is called `modeline`. see `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+

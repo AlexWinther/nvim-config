@@ -20,4 +20,15 @@ return {
         --     vim.cmd.colorscheme 'catppuccin'
         -- end,
     },
+    {
+        "xiyaowong/transparent.nvim",
+        lazy = false,
+        config = function()
+            local transparent = require("transparent")
+
+            transparent.clear_prefix("NvimTree")
+            transparent.clear_prefix("Telescope")
+
+        end
+    },
 }

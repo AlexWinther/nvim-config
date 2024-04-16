@@ -7,12 +7,13 @@ return {
     },
     config = function()
         local leap = require("leap")
-        local flit = require("flit")
-
-        flit.setup({
-            labeled_modes = "nvo"
+        require("flit").setup({
+            labeled_mode = "nvo",
         })
+
         leap.add_default_mappings()
+        leap.opts.safe_labels = 'sfnutSFNLHMUGTZ?'
+        leap.opts.labels = 'sfnjklhodweimbuyvrgtaqpcxzSFNJKLHODWEIMBUYVRGTAQPCXZ?'
         vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
         -- The below settings make Leap's highlighting closer to what you've been

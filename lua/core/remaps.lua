@@ -1,10 +1,13 @@
--- map leader 
+-- map leader
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- conciseness
 local keymap = vim.keymap
 local vcmd = vim.cmd
+
+-- open terminal
+keymap.set('n', '<leader>et', ':Ex<CR>', { desc = 'Open netrw' })
 
 -- Unmap space
 keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -29,10 +32,6 @@ keymap.set('v', '<', '<gv')
 -- Move selected line / block of text in visual mode
 keymap.set('x', 'K', ":move '<-2<CR>gv-gv")
 keymap.set('x', 'J', ":move '>+1<CR>gv-gv")
-
--- Remains visual mode after shifting
-keymap.set('v', '<S-tab>', '<gv')
-keymap.set('v', '<tab>', '>gv')
 
 -- Clear highlights
 keymap.set('n', '<leader>ch', vcmd.noh)
@@ -59,10 +58,12 @@ keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnos
 keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 
 -- Use ctrl-[hjkl] to select the active split!
-keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
-keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
-keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
-keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
+if not vim.g.vscode then
+    keymap.set('n', '<C-h>', '<Cmd>NvimTmuxNavigateLeft<CR>', { silent = true })
+    keymap.set('n', '<C-j>', '<Cmd>NvimTmuxNavigateDown<CR>', { silent = true })
+    keymap.set('n', '<C-k>', '<Cmd>NvimTmuxNavigateUp<CR>', { silent = true })
+    keymap.set('n', '<C-l>', '<Cmd>NvimTmuxNavigateRight<CR>', { silent = true })
+end
 
 -- Remap for dealing with word wrap
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
