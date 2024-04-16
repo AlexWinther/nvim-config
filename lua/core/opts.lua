@@ -14,6 +14,9 @@ vim.opt.showmode = false
 
 -- Wrap lines with same indentation
 vim.opt.breakindent = true
+vim.opt.wrap = false
+vim.opt.linebreak = true
+vim.opt.breakat = ' '
 
 -- Save undo history
 vim.opt.undofile = true
