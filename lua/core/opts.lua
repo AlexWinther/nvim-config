@@ -18,6 +18,11 @@ vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.breakat = ' '
 
+-- tab settings
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- Save undo history
 vim.opt.undofile = true
 
