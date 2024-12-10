@@ -28,13 +28,14 @@ return {
       },
       filters = {
         dotfiles = false,
+        custom = { '^.git$' },
       },
-      -- filters = {
-      --   custom = { "^.git$" },
-      -- },
-      -- renderer = {
-      --   indent_width = 1,
-      -- },
+      renderer = {
+        indent_width = 1,
+      },
+      git = {
+        ignore = false,
+      },
     }
   end,
 }
